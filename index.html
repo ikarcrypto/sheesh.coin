@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Clickable Image</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .center-image {
+            max-width: 100%;
+            max-height: 80%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .center-image:hover {
+            transform: scale(1.05);
+        }
+
+        .center-image:active {
+            transform: scale(0.95);
+        }
+
+        .sheesh-counter {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Container for the icons */
+        .social-icons-container {
+            display: flex;
+            gap: 20px; /* Adds space between icons */
+            margin-top: 20px;
+        }
+
+        /* Style for each icon and its link */
+        .social-icons-container a {
+            display: block;
+            border-radius: 50%;
+            background-color: white;
+            padding: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons-container a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons-container img {
+            width: 40px; /* Adjust icon size */
+            height: 40px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <img src="1.png" alt="Clickable Image" class="center-image" id="clickableImage">
+    <div class="sheesh-counter" id="sheeshCounter">Sheesh Counter: 0</div>
+
+    <div class="social-icons-container">
+        <a href="https://pump.fun" target="_blank">
+            <img src="pump.png" alt="Pump.fun icon">
+        </a>
+        <a href="https://dexscreener.com" target="_blank">
+            <img src="dex.png" alt="Dexscreener icon">
+        </a>
+        <a href="https://x.com" target="_blank">
+            <img src="x.png" alt="X.com icon">
+        </a>
+    </div>
+    <script>
+        let sheeshCount = 0;
+        
+        const clickableImage = document.getElementById('clickableImage');
+        const sheeshCounter = document.getElementById('sheeshCounter');
+
+        clickableImage.addEventListener('click', function() {
+            // Create a new Audio object for each click
+            const clickSound = new Audio('1.mp3');
+            clickSound.play();
+            
+            // Update sheesh counter
+            sheeshCount++;
+            sheeshCounter.textContent = `Sheesh Counter: ${sheeshCount}`;
+            
+            // Visual feedback
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
